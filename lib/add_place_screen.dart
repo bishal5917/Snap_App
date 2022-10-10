@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
 import 'package:snap_app/image_input.dart';
+import 'dart:io';
+
+import 'package:snap_app/providers/great_places.dart';
 
 class AddPlaceScreen extends StatefulWidget {
   const AddPlaceScreen({super.key});
@@ -12,6 +16,23 @@ class AddPlaceScreen extends StatefulWidget {
 
 class _AddPlaceScreenState extends State<AddPlaceScreen> {
   final titleController = TextEditingController();
+
+  var pickedImage;
+  var locs;
+
+  void selectImage(File pickedImage) {
+    pickedImage = pickedImage;
+  }
+
+  void savePlace() {
+    if (titleController.text.isEmpty && pickedImage == null) {
+      return;
+    }
+    Provider.of<GreatPlaces>(context, listen: false)
+        .addPlace(titleController.text, pickedImage);
+    Navigator.of(context).pop();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,12 +53,12 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                     controller: titleController,
                   ),
                   SizedBox(height: 20),
-                  ImageInput()
+                  ImageInput(selectImage)
                 ]),
               ),
             )),
             OutlinedButton(
-                onPressed: () {},
+                onPressed: savePlace,
                 child: Text(
                   'Add Snap',
                   style: TextStyle(
