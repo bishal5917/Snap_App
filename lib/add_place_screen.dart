@@ -17,19 +17,19 @@ class AddPlaceScreen extends StatefulWidget {
 class _AddPlaceScreenState extends State<AddPlaceScreen> {
   final titleController = TextEditingController();
 
-  var pickedImage;
+  var _pickedImage;
   var locs;
 
   void selectImage(File pickedImage) {
-    pickedImage = pickedImage;
+    _pickedImage = pickedImage;
   }
 
   void savePlace() {
-    if (titleController.text.isEmpty && pickedImage == null) {
+    if (titleController.text.isEmpty && _pickedImage == null) {
       return;
     }
     Provider.of<GreatPlaces>(context, listen: false)
-        .addPlace(titleController.text, pickedImage);
+        .addPlace(titleController.text, _pickedImage);
     Navigator.of(context).pop();
   }
 
