@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:snap_app/add_place_screen.dart';
 import 'package:snap_app/places_list_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:snap_app/providers/great_places.dart';
@@ -18,9 +19,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.indigo,
         ),
         home: PlacesListScreen(),
+        routes: {'/add_place': (ctx) => AddPlaceScreen()},
       ),
     );
   }

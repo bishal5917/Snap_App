@@ -8,7 +8,13 @@ class PlacesListScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('SnapSaver'),
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.add))],
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/add_place');
+              },
+              icon: Icon(Icons.add))
+        ],
       ),
     );
   }
