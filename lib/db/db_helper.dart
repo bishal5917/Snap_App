@@ -7,10 +7,22 @@ class DBHelper {
     final sqlDb = await sql.openDatabase(path.join(dbPath, 'places.db'),
         onCreate: (db, version) {
       return db.execute(
-          'CREATE TABLE user_places(id TEXT PRIMARY KEY,title TEXT,image TEXT');
+          'CREATE TABLE user_places(id TEXT PRIMARY KEY,title TEXT,image TEXT)');
     }, version: 1);
 
     await sqlDb.insert(table, data,
         conflictAlgorithm: sql.ConflictAlgorithm.replace);
+  }
+
+  static Future<List<Map<String, dynamic>>> getData(String table) async {
+    final dbPath = await sql.getDatabasesPath();
+    final sqlDb = await sql.openDatabase(path.join(dbPath, 'places.db'),
+        onCreate: (db, version) {
+      return db.execute(
+          'CREATE TABLE user_places(id TEXT PRIMARY KEY,title TEXT,image TEXT)');
+    }, version: 1);
+
+    final foundData = await sqlDb.query(table);
+    return foundData;
   }
 }

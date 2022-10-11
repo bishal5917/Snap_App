@@ -8,7 +8,7 @@ import 'dart:io';
 import 'package:snap_app/providers/great_places.dart';
 
 class AddPlaceScreen extends StatefulWidget {
-  const AddPlaceScreen({super.key});
+  // const AddPlaceScreen({super.key});
 
   @override
   State<AddPlaceScreen> createState() => _AddPlaceScreenState();
