@@ -3,7 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 import 'package:snap_app/image_input.dart';
-import 'package:snap_app/location_input.dart';
+// import 'package:snap_app/location_input.dart';
 import 'dart:io';
 
 import 'package:snap_app/providers/great_places.dart';
@@ -55,8 +55,8 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                   ),
                   SizedBox(height: 20),
                   ImageInput(selectImage),
-                  SizedBox(height: 20),
-                  LocationInput()
+                  // SizedBox(height: 20),
+                  // LocationInput()
                 ]),
               ),
             )),
